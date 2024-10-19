@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    font-size: 1.2rem;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, #b75e92, #c24848);
+    overflow: hidden;
+}
+
+nav {
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
+    align-items: center;
+    font-weight: 500;
+    
+}
