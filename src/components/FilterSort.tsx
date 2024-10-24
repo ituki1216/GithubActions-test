@@ -17,4 +17,11 @@ const Filtersort: React.FC = () => {
   const [filter, setFilter]  = useState("");
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
-  
+  const FilterItems = Items
+  .filter(item => item.name.toLowerCase().includes(filter.toLowerCase()))
+  .sort((a, b) => {
+    return a.name.localeCompare(b.name);
+      } else {
+        return b.name.localeCompare(a.name);
+      }
+    });
