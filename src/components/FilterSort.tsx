@@ -13,3 +13,8 @@ const items: Item[] = [
   { id: 4, name: "鋼のつるぎ" }
   ]; 
   
+const Filtersort: React.FC = () => {
+  const [filter, setFilter]  = useState("");
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+
+  
