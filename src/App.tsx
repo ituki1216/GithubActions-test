@@ -36,5 +36,29 @@ const App: React.FC = () => {
   const updateUser = (updatedUser) => {
     setUser(updatedUser);
   };
+  
+return (
+    <Router>
+      <div className="app">
+        <h1>EC Site</h1>
+        <SearchBar onSearch={(query) => console.log('Search:', query)} />
+        <Switch>
+          <Route path="/" exact>
+            <ProductList products={products} onAddToCart={addToCart} />
+          </Route>
+          <Route path="/cart">
+            <Cart items={cartItems} onRemove={removeFromCart} onCheckout={handleCheckout} />
+          </Route>
+          <Route path="/checkout">
+            <Checkout onCheckout={handleCheckout} />
+          </Route>
+          <Route path="/account">
+            <UserAccount user={user} onUpdate={updateUser} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+};
 
-  export default App;
+export default App;
