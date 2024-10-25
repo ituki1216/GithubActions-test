@@ -10,16 +10,10 @@ import SearchBar from './components/SearchBar';
 import FilterSort from './components/FilterSort';
 
 const App: React.FC = () => {
-  return (
-    <div>
-      <Header />
-      <SearchBar />
-      <FilterSort />
-      <ProductList />
-      {/* 必要に応じて、特定のページに応じたコンポーネントを表示 */}
-      {/* 例えば、<ProductDetail /> や <Cart /> など */}
-      <Footer />
-    </div>
-  );
+  const [products] = useState([
+    { id: 1, name: 'Product 1', price: 29.99, imageUrl: '/images/product1.jpg' },
+    { id: 2, name: 'Product 2', price: 19.99, imageUrl: '/images/product2.jpg' },
+    // 追加の商品
+  ]);
 
   export default App;
