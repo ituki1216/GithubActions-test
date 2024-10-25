@@ -18,3 +18,9 @@ const UserAccount: React.FC<UserAccountProps> = ({ user, onUpdate }) => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [address, setAddress] = useState(user.address);
+
+  
+  const handleSave = () => {
+    onUpdate({ name, email, address });
+    setEditing(false);
+  };
