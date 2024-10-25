@@ -6,3 +6,9 @@ interface User {
   email: string;
   address: string;
 }
+
+
+interface UserAccountProps {
+  user: User;
+  onUpdate: (updatedUser: User) => void;
+}
