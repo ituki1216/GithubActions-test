@@ -16,4 +16,25 @@ const App: React.FC = () => {
     // 追加の商品
   ]);
 
+  
+  const [cartItems, setCartItems] = useState([]);
+  const [user, setUser] = useState({ name: 'John Doe', email: 'john@example.com', address: '123 Main St' });
+
+  const addToCart = (product) => {
+    setCartItems((prevItems) => [...prevItems, { ...product, quantity: 1 }]);
+  };
+
+  const removeFromCart = (id) => {
+    setCartItems((prevItems) => prevItems.filter(item => item.id !== id));
+  };
+
+  const handleCheckout = (formData) => {
+    console.log('Checkout data:', formData);
+    // チェックアウト処理を実行
+  };
+
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
   export default App;
