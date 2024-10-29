@@ -5,4 +5,12 @@ class ProductController {
         // 商品一覧を取得
         $products = ProductModel::getAllProducts();
         include 'views/product_list.php';
+
+class UserController {
+    // ユーザー一覧を表示するメソッド
+    public function index() {
+        $users = $this->getAllUsers(); // ユーザーを取得
+        include 'views/user/index.php'; // ビューを表示
     }
+    }
+
