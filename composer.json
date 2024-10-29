@@ -30,3 +30,6 @@
   "minimum-stability": "stable",
   "prefer-stable": true
 }
+{
+    "license": "proprietary"
+}
