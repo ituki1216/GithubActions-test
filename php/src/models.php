@@ -67,3 +67,10 @@ class Product {
         return $stmt->execute();
     }
 }
+
+class Order {
+    private $db;
+
+    public function __construct($database) {　// order classが外部からdb接続を行うための基盤をつくる
+        $this->db = $database;
+    }
