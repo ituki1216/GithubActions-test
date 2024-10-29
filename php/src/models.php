@@ -32,3 +32,11 @@ class Product {
         $stmt->excute();
         return $stmt->feachAll(PDO::FEACH_ASSOC); // 実行結果を連想配列で取得
     }
+
+    // 商品をIDで取得
+    public function getProductById($id) {
+        $stmt = $this->db->prepare("SELECT * FROM products WHERE id = :id");　// IDのみを取得
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT); //bindParamでSQLいんぜくしょんを防ぐ
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC); //fecch_Assocでデータベースから取得した結果を辞書型として取得する
+    }
