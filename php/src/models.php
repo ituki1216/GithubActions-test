@@ -40,3 +40,12 @@ class Product {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC); //fecch_Assocでデータベースから取得した結果を辞書型として取得する
     }
+
+    // 商品を追加
+    public function addProduct($name, $price, $description) {
+        $stmt = $this->db->prepare("INSERT INTO products (name, price, description) VALUES (:name, :price, :description)");
+        $stmt->bindParam(':name', $name); // bindParamによるSQLいんぜくしょんを防ぐ
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':description', $description);
+        return $stmt->execute();
+    }
