@@ -20,5 +20,15 @@ class UserController {
             ['id' => 2, 'name' => 'Bob'],
         ];
     }
+
+     public function create() {
+        // ユーザー作成のロジックを書く
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // フォームからのデータを処理
+            // データベースに保存する処理を書く
+        }
+        include 'views/user/create.php'; // ビューを表示
+    }
+}
     }
 
