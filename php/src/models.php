@@ -25,3 +25,10 @@ class Product {
     public function __construct($database) {
         $this->db = $database;
     }
+
+    // 全兵信の取得
+    public function getAllProduct() {
+        $stmt = $this->db->prepare("SELECT * FROM products");
+        $stmt->excute();
+        return $stmt->feachAll(PDO::FEACH_ASSOC);
+    }
