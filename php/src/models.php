@@ -49,3 +49,13 @@ class Product {
         $stmt->bindParam(':description', $description);
         return $stmt->execute();
     }
+
+    // 商品を更新
+    public function updateProduct($id, $name, $price, $description) {
+        $stmt = $this->db->prepare("UPDATE products SET name = :name, price = :price, description = :description WHERE id = :id");
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
