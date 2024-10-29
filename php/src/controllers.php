@@ -12,5 +12,13 @@ class UserController {
         $users = $this->getAllUsers(); // ユーザーを取得
         include 'views/user/index.php'; // ビューを表示
     }
+
+    private function getAllUsers() {
+        // ここでデータベースからユーザーを取得する処理を書く
+        return [
+            ['id' => 1, 'name' => 'Alice'],
+            ['id' => 2, 'name' => 'Bob'],
+        ];
+    }
     }
 
