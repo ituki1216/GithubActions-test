@@ -74,3 +74,26 @@ class Order {
     public function __construct($database) {　// order classが外部からdb接続を行うための基盤をつくる
         $this->db = $database;
     }
+
+    v// 注文を作成
+    public function createOrder($userId, $productIds) {
+        $stmt = $this->db->prepare("INSERT INTO orders (user_id) VALUES (:user_id)");
+        $stmt->bindParam(':user_id', $userId);
+        if ($stmt->execute()) {
+            $orderId = $this->db->lastInsertId();
+            foreach ($productIds as $productId) {
+                $this->addProductToOrder($orderId, $productId);
+            }
+            return $orderId;
+        }
+        return false;
+    }
+
+    // 注文に商品を追加
+    private function addProductToOrder($orderId, $productId) {
+        $stmt = $this->db->prepare("INSERT INTO order_products (order_id, product_id) VALUES (:order_id, :product_id)");
+        $stmt->bindParam(':order_id', $orderId);
+        $stmt->bindParam(':product_id', $productId);
+        return $stmt->execute();
+    }
+}
