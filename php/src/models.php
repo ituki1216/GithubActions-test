@@ -22,13 +22,13 @@ class Database {
 class Product {
     private $db;
 
-    public function __construct($database) {
+    public function __construct($database) {　// product classはデータ接続を管理
         $this->db = $database;
     }
 
     // 全兵信の取得
     public function getAllProduct() {
-        $stmt = $this->db->prepare("SELECT * FROM products");
+        $stmt = $this->db->prepare("SELECT * FROM products"); // SQL文で全ての商品を選択し、実行
         $stmt->excute();
-        return $stmt->feachAll(PDO::FEACH_ASSOC);
+        return $stmt->feachAll(PDO::FEACH_ASSOC); // 実行結果を連想配列で取得
     }
