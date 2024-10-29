@@ -59,3 +59,11 @@ class Product {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     }
+
+    // 商品を削除
+    public function deleteProduct($id) {
+        $stmt = $this->db->prepare("DELETE FROM products WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+}
