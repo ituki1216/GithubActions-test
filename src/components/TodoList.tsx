@@ -14,4 +14,16 @@ const TodoList: React.FC = () => {
   const fetchTodos = async () => { // fetch todosは非同期処理でtodoリストを取得する
     const response = await axios.get(`http://localhost:8000/api/todos/${id}`);
     setTodos(response.data);
-  };
+ };
+
+ const addTodo = async () => { // 非同期処理addTodo
+  if (newTodo) { // 、もしnewTodoが空ではない場合, 以下の処理を実行
+   await axios.post('http://localhost:8000/api/todos',{ title: newTodo}); // axios postメソッドを使い指定アドレスに送信
+   setNewTodo("");
+   fetchTodos(); // fetchTodo関数を呼び出して最新のtodoを画面へレスポンスする
+  }
+ };
+
+ 
+
+ 
