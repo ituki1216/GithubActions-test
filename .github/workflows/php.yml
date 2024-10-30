@@ -1,9 +1,9 @@
 name: PHP Composer
 
-on:
-  push:
+on: # どこのbranchで実行するか
+  push: # コードがmsterというブランチに追加されたときに実行
     branches: [ "master" ]
-  pull_request:
+  pull_request: # master-branchに対してpull requestが要求された時にも実行
     branches: [ "master" ]
 
 permissions:
