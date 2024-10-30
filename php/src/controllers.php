@@ -22,6 +22,13 @@ class Todocontroller extends Controller {
         $todo = Todo::findOrFail($id); # $idを持つものをデータベースから検索し、見つからなければ404を返す findOrFail
         $todo->update($request->all(); #リクエストに含まれるすべてのデータを取得しupdateメソッドに変えsy
         return response()->json($todo); #更新されたTodoアイテムをJSON形式で返す
+
+        public function delete($id) { 
+            $todo = Todo::findOrFail($id);
+            $todo->delete();
+            return response()->json(null, 204);
+        }
+    }
         
         
         
