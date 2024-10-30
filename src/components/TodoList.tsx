@@ -24,6 +24,15 @@ const TodoList: React.FC = () => {
   }
  };
 
- 
+  const updateTodo = async (todo: Todo) => {
+        const updatedTodo = { ...todo, completed: !todo.completed };
+        await axios.put(`http://localhost:8000/api/todos/${todo.id}`, updatedTodo);
+        fetchTodos();
+    };
+
+    const deleteTodo = async (id: number) => {
+        await axios.delete(`http://localhost:8000/api/todos/${id}`);
+        fetchTodos();
+    };
 
  
