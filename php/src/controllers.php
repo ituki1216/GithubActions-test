@@ -15,6 +15,13 @@ class Todocontroller extends Controller {
        $request->validate(['title' => 'required|string|max:255']); #titleフィールドが必須で、文字列かつ最大255文字であることを検証します。
         $todo = Todo::create(["title" => $request->title]); # バリデーションに合格した場合、todoを作成し、データベースに保存する
         return response()->json($todo, 201); # json形式でレスポンスを返す
+    }
+
+    public function update(Request $request, $id) {
+        $request->Validate(["title" => "required|string|max:1000"]); # requiredでtitle-filedが必須であることを指定, 文字数の上限を1000と定義
+        $todo = Todo::findOrFail($id); # $idを持つものをデータベースから検索し、見つからなければ404を返す findOrFail
+        $todo->update($request->all(); #リクエストに含まれるすべてのデータを取得しupdateメソッドに変えsy
+        return response()->json($todo); #更新されたTodoアイテムをJSON形式で返す
         
         
         
