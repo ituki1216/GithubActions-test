@@ -12,16 +12,16 @@ permissions: # 必要とするパーミッションの権限を指定
 jobs: # ここで一連の作業を定義する
   build: # buildというjobの名前
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # このjobsが実行される環境を指定
 
-    steps:
-    - uses: actions/checkout@v4
+    steps: # jobs内で1つ1つ実行される作業を定義
+    - uses: actions/checkout@v4 # リポジトリのコードを取得する
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+    - name: Validate composer.json and composer.lock # stepsの名前
+      run: composer validate --strict # 実行するコマンドを指定
 
     - name: Cache Composer packages
-      id: composer-cache
+      id: composer-cache # stepsに一意の値を付与
       uses: actions/cache@v3
       with:
         path: vendor
@@ -29,11 +29,5 @@ jobs: # ここで一連の作業を定義する
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test
+    - name: Install dependencies # 依存関係のインストール
+      run: composer install --prefer-dist --no-progress # compiserをインストール
