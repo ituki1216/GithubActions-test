@@ -16,7 +16,7 @@ const TodoList: React.FC = () => {
     setTodos(response.data);
  };
 
- const addTodo = async () => { // 非同期処理addTodo
+const addTodo = async () => { // 非同期処理addTodo
   if (newTodo) { // 、もしnewTodoが空ではない場合, 以下の処理を実行
    await axios.post('http://localhost:8000/api/todos',{ title: newTodo}); // axios postメソッドを使い指定アドレスに送信
    setNewTodo("");
@@ -24,7 +24,7 @@ const TodoList: React.FC = () => {
   }
  };
 
-  const updateTodo = async (todo: Todo) => {
+ const updateTodo = async (todo: Todo) => {
         const updatedTodo = { ...todo, completed: !todo.completed };
         await axios.put(`http://localhost:8000/api/todos/${todo.id}`, updatedTodo);
         fetchTodos();
@@ -34,5 +34,9 @@ const TodoList: React.FC = () => {
         await axios.delete(`http://localhost:8000/api/todos/${id}`);
         fetchTodos();
     };
+ 
+ useEffect(() => {
+        fetchTodos();
+    }, []);
 
  
