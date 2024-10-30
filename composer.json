@@ -28,7 +28,6 @@
     "cs-fix": "php-cs-fixer fix"
   },
   "minimum-stability": "stable",
-  "prefer-stable": true
-  },
+  "prefer-stable": true,
   "license": "proprietary"
 }
