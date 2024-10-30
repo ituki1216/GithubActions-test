@@ -6,11 +6,11 @@ on: # どこのbranchで実行するか
   pull_request: # master-branchに対してpull requestが要求された時にも実行
     branches: [ "master" ]
 
-permissions:
-  contents: read
-
-jobs:
-  build:
+permissions: # 必要とするパーミッションの権限を指定 
+  contents: read # 読み取りを指定
+ 
+jobs: # ここで一連の作業を定義する
+  build: # buildというjobの名前
 
     runs-on: ubuntu-latest
 
