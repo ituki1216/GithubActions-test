@@ -1,5 +1,46 @@
 <?php
 
+namespace App\Http\Controllers; # このクラスが属する名前空間
+
+use Illuminate\Http\Request; # ほかのclassを使用するためのimport文
+use App\Models\Todo; # todomodelをimport
+
+
+class Todocontroller extends Controller {
+    public function index() { #全てのtodoデータを取得する
+        return Todo:all();
+    }
+
+    public function store(Request $request) {
+       $request->validate(['title' => 'required|string|max:255']); #titleフィールドが必須で、文字列かつ最大255文字であることを検証します。
+        $todo = Todo::create(["title" => $request->title]); # バリデーションに合格した場合、todoを作成し、データベースに保存する
+        return response()->json($todo, 201); # json形式でレスポンスを返す
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class ProductController {
     public function list() {
         // 商品一覧を取得
@@ -31,4 +72,5 @@ class UserController {
     }
 }
     }
+
 
